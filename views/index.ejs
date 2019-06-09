@@ -1,0 +1,23 @@
+<% include partials/header %>
+   <% if (errors) { %>
+    <ul>
+    <% errors.forEach(err => { %>
+        <li><%= err.msg %></li>
+    <% }) %>
+    </ul>
+   <% } %>
+    <form method="POST" action="/posts/user">
+        <span>first name: <br></span><input name="firstname"><br>
+        <span>last name: <br></span><input name="lastname"><br>
+        <span>email:<br></span><input name="email"><br><br>
+        <input type="submit">
+    </form>
+    <h1><%= title %></h1>
+    <ul>
+        <% usersList.forEach(user =>{ %>
+            <li><%= `${user.first_name} - ` %>
+                <a href="#" class='deleteBtn' data-id= "<%= user._id %>">delete</a>
+            </li>
+       <% }) %>
+    </ul>
+<% include partials/footer %>

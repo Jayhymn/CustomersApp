@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My App</title>
+            <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                    crossorigin="anonymous"></script>
+            <script>
+            $(document).ready(() => {
+                $('.deleteBtn').on('click', (event) => {
+                // eslint-disable-next-line no-restricted-globals
+                // eslint-disable-next-line no-alert
+                const confirmation = confirm('Are you sure?');
+                    if (confirmation) {
+                        $.ajax({
+                        type: 'DELETE',
+                        url: '/delete/' + $(event.target)
+                        .data('id')}).done(window.location.replace('/')); 
+                    } else return false;
+    });
+});
+        </script>
+    </head>
+    <body>
